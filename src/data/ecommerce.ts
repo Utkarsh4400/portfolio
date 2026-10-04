@@ -17,7 +17,7 @@ export const ecommerce: Ecommerce[] = [
       "Managing and optimizing the Shopify storefront with intuitive mega-menu navigation, SEO improvements, content optimization, and conversion-focused UX enhancements to drive sales and increase average order value.",
     tint: "var(--s-pink)",
     image: "/images/projects/skate-supply-placeholder.webp",
-    url: "#PROJECT_SKATE_SUPPLY",
+    url: "https://www.skatesupplyindia.com/",
   },
   {
     id: "the-hearty-way",
@@ -27,7 +27,7 @@ export const ecommerce: Ecommerce[] = [
       "Building and optimizing the online storefront, managing SEO and content, and improving conversion rates through UX enhancements, product merchandising, and checkout optimization.",
     tint: "var(--s-yellow)",
     image: "/images/projects/the-hearty-way-placeholder.webp",
-    url: "#PROJECT_HEARTY_WAY",
+    url: "https://theheartyway.co",
   },
   {
     id: "bubbleskatzz",
@@ -36,6 +36,7 @@ export const ecommerce: Ecommerce[] = [
     description:
       "Driving the brand’s digital growth through online store development, SEO optimization, content strategy, and conversion-focused improvements to increase conversions and average order value.",
     tint: "var(--s-mint)",
-    url: "#PROJECT_BUBBLESKATZZ",
+    image: "/images/projects/bubbleskatzz-placeholder.webp",
+    url: "https://bubbleskatzz.com",
   },
 ];
