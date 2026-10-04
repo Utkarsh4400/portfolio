@@ -16,7 +16,7 @@ npm run build
 
 - `src/data/site.ts` - Personal information, contact details, resume, and availability.
 - `src/data/projects.ts` - Featured projects, descriptions, technology highlights, links, and screenshot references.
-- `src/data/ventures.ts` - E-commerce and brand ventures, including Skate Supply India, The Hearty Way, and Bubbleskatzz.
+- `src/data/ecommerce.ts` - E-commerce including Skate Supply India, The Hearty Way, and Bubbleskatzz.
 - `src/data/journey.ts` - Career timeline, development principles, technical skills, and education.
 
 ## Motion System
@@ -45,7 +45,7 @@ The portfolio highlights:
 
 ## Before Deployment
 
-- Replace placeholder `#PROJECT_...` links in `projects.ts` and `ventures.ts` with verified live project URLs.
+- Replace placeholder `#PROJECT_...` links in `projects.ts` and `ecommerce.ts` with verified live project URLs.
 - Add the sutR project screenshot at `public/images/projects/sutr-placeholder.webp` and update its `hasImage` setting if the image is available. The project is currently marked `featured: false`.
 - Replace `metadataBase` in `src/app/layout.tsx` with the production domain.
 - Verify all project screenshots, external links, resume links, and contact details.

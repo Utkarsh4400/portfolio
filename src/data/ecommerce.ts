@@ -1,4 +1,4 @@
-export type Venture = {
+export type Ecommerce = {
   id: string;
   name: string;
   role: string;
@@ -8,7 +8,7 @@ export type Venture = {
   url: string;
 };
 
-export const ventures: Venture[] = [
+export const ecommerce: Ecommerce[] = [
   {
     id: "skate-supply-india",
     name: "Skate Supply India",

@@ -11,9 +11,7 @@ import ScrollBoard from "@/components/motion/ScrollBoard";
 import Preloader from "@/components/motion/Preloader";
 
 export const metadata: Metadata = {
-  // Placeholder - swap for your real domain once deployed (Vercel gives you
-  // one immediately, e.g. your-project.vercel.app, or point a custom domain).
-  metadataBase: new URL("https://example.com"),
+  metadataBase: new URL("https://utkarsh-chauhan-portfolio.vercel.app/"),
   title: {
     default: site.seo.title,
     template: `%s - ${site.name}`,

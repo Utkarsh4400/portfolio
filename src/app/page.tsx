@@ -5,7 +5,7 @@ import ExperienceTimeline from "@/components/sections/ExperienceTimeline";
 import EngineeringApproach from "@/components/sections/EngineeringApproach";
 import TechStack from "@/components/sections/TechStack";
 import Education from "@/components/sections/Education";
-import Ventures from "@/components/sections/Ventures";
+import Ecommerce from "@/components/sections/Ecommerce";
 import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
 
@@ -19,7 +19,7 @@ export default function Home() {
       <EngineeringApproach />
       <TechStack />
       <Education />
-      <Ventures />
+      <Ecommerce />
       <About />
       <Contact />
     </>

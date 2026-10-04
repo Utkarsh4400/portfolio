@@ -3,18 +3,18 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "framer-motion";
-import { ventures, type Venture } from "@/data/ventures";
+import { ecommerce, type Ecommerce } from "@/data/ecommerce";
 import SplitText from "@/components/motion/SplitText";
 import Tilt from "@/components/motion/Tilt";
 import { useMedia } from "@/lib/useMedia";
 
-function VentureCard({
+function EcommerceCard({
   v,
   i,
   progress,
   fan,
 }: {
-  v: Venture;
+  v: Ecommerce;
   i: number;
   progress: MotionValue<number>;
   fan: boolean;
@@ -71,7 +71,7 @@ function VentureCard({
   );
 }
 
-export default function Ventures() {
+export default function Ecommerce() {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
   const desktop = useMedia("(min-width: 768px)");
@@ -79,7 +79,7 @@ export default function Ventures() {
   const fan = desktop && !reduced;
 
   return (
-    <section id="ventures" className="relative">
+    <section id="ecommerce" className="relative">
       <div className="wrap py-24 md:py-36">
         <h2 className="max-w-3xl text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.95]">
           <SplitText text="I have powered the tech behind these skate brands." />
@@ -89,8 +89,8 @@ export default function Ventures() {
         </p>
 
         <div ref={ref} className="mt-16 grid gap-6 md:mt-24 md:grid-cols-3 md:gap-8">
-          {ventures.map((v, i) => (
-            <VentureCard key={v.id} v={v} i={i} progress={scrollYProgress} fan={fan} />
+          {ecommerce.map((v, i) => (
+            <EcommerceCard key={v.id} v={v} i={i} progress={scrollYProgress} fan={fan} />
           ))}
         </div>
       </div>
