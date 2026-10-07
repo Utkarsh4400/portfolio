@@ -1,0 +1,42 @@
+export type Ecommerce = {
+  id: string;
+  name: string;
+  role: string;
+  description: string;
+  tint: string;
+  image?: string;
+  url: string;
+};
+
+export const ecommerce: Ecommerce[] = [
+  {
+    id: "skate-supply-india",
+    name: "Skate Supply India",
+    role: "E-commerce, SEO & CRO",
+    description:
+      "Managing and optimizing the Shopify storefront with intuitive mega-menu navigation, SEO improvements, content optimization, and conversion-focused UX enhancements to drive sales and increase average order value.",
+    tint: "var(--s-pink)",
+    image: "/images/projects/skate-supply-placeholder.webp",
+    url: "https://www.skatesupplyindia.com/",
+  },
+  {
+    id: "the-hearty-way",
+    name: "The Hearty Way",
+    role: "E-commerce, SEO & CRO",
+    description:
+      "Building and optimizing the online storefront, managing SEO and content, and improving conversion rates through UX enhancements, product merchandising, and checkout optimization.",
+    tint: "var(--s-yellow)",
+    image: "/images/projects/the-hearty-way-placeholder.webp",
+    url: "https://theheartyway.co",
+  },
+  {
+    id: "bubbleskatzz",
+    name: "Bubbleskatzz",
+    role: "E-commerce, SEO & CRO",
+    description:
+      "Driving the brand’s digital growth through online store development, SEO optimization, content strategy, and conversion-focused improvements to increase conversions and average order value.",
+    tint: "var(--s-mint)",
+    image: "/images/projects/bubbleskatzz-placeholder.webp",
+    url: "https://bubbleskatzz.com",
+  },
+];

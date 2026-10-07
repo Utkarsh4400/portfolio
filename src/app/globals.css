@@ -1,0 +1,305 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------
+   Design tokens
+   --------------------------------------------- */
+:root {
+  --bg: #161412;
+  --bg-elevated: #1e1b17;
+  --bg-elevated-2: #262220;
+  --fg: #f2eee4;
+  --muted: #9c9488;
+  --line: #33302b;
+  --accent: #ffc233;
+  --accent-contrast: #161412;
+  --accent-soft: rgba(255, 194, 51, 0.14);
+
+  /* sticker palette - constant in both themes, always paired with dark ink */
+  --ink: #161412;
+  --s-yellow: #ffc233;
+  --s-pink: #ff7ba3;
+  --s-blue: #9db0ff;
+  --s-mint: #4fe0a4;
+  --s-orange: #ff8a3d;
+  --s-violet: #9b8cff;
+
+  --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui,
+    sans-serif;
+  --font-body: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #efece4;
+  --bg-elevated: #e6e2d8;
+  --bg-elevated-2: #dcd7ca;
+  --fg: #191510;
+  --muted: #6b6459;
+  --line: #d3cdbf;
+  --accent: #f5a300;
+  --accent-contrast: #161412;
+  --accent-soft: rgba(245, 163, 0, 0.14);
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-elevated-2: var(--bg-elevated-2);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    font-optical-sizing: auto;
+  }
+}
+
+/* Outlined display type that fills on hover */
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--muted);
+  transition: color 0.4s ease, -webkit-text-stroke-color 0.4s ease;
+}
+.outline-text:hover {
+  color: var(--fg);
+  -webkit-text-stroke-color: var(--fg);
+}
+
+/* Sticker chips */
+.sticker {
+  color: var(--ink);
+  box-shadow: 0 6px 0 -2px rgba(0, 0, 0, 0.28);
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin-slow {
+  animation: spin-slow 22s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .spin-slow {
+    animation: none;
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+/* Focus visibility */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Background texture - subtle grid + noise */
+.field {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 88px 88px;
+  opacity: 0.16;
+  mask-image: radial-gradient(
+    ellipse 80% 60% at 50% 0%,
+    black 40%,
+    transparent 90%
+  );
+}
+
+.noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Custom cursor (desktop only) */
+body.cursor-active {
+  cursor: none;
+}
+
+body.cursor-active .cursor-dot {
+  display: flex;
+}
+
+.cursor-dot {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  pointer-events: none;
+  border-radius: 999px;
+  border: 1px solid var(--fg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: var(--fg);
+  background: var(--accent-soft);
+  backdrop-filter: blur(2px);
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease,
+    border-color 0.2s ease, background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+/* Underline link */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.14em;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0.28);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.hairline {
+  border-top: 1px solid var(--line);
+}
+
+.wrap {
+  width: 100%;
+  max-width: 84rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    padding-inline: 3rem;
+  }
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-elevated-2);
+  border-radius: 999px;
+}
+
+/* Hero role swapper: steps through four lines, then loops seamlessly */
+@keyframes role-swap {
+  0%,
+  20% {
+    transform: translateY(0);
+  }
+  25%,
+  45% {
+    transform: translateY(-20%);
+  }
+  50%,
+  70% {
+    transform: translateY(-40%);
+  }
+  75%,
+  95% {
+    transform: translateY(-60%);
+  }
+  100% {
+    transform: translateY(-80%);
+  }
+}
+.role-track {
+  animation: role-swap 9s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .role-track {
+    animation: none;
+  }
+}
+
+.outline-marquee {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--fg);
+}
+.outline-marquee svg {
+  color: var(--s-pink);
+}
